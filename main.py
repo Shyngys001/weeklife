@@ -164,5 +164,18 @@ def main():
     updater.start_polling()
     updater.idle()
 
+@app.route(f"/{TOKEN}", methods=["POST"])
+def webhook():
+    update = Update.de_json(request.get_json(force=True), bot)
+    dispatcher.process_update(update)
+    return "ok"
+
+@app.route("/")
+def index():
+    return "LifeWeeksBot работает!"
+
 if __name__ == '__main__':
-    main()
+    from telegram.ext import Updater
+    init_db()
+    bot.set_webhook(url=f"{URL}{TOKEN}")
+    app.run(host="0.0.0.0", port=PORT)
