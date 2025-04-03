@@ -40,7 +40,7 @@ def generate_high_quality_life_chart(birth_date_str: str, weeks_per_year=52, tot
     ax.set_yticks([])
 
     # Заголовок
-    ax.set_title("70 лет жизни в неделях", fontsize=16, fontname="Arial", color='black', pad=20)
+    ax.set_title("70 лет жизни в неделях", fontsize=16, color='black', pad=20)
 
     # Убираем рамки для чистого вида
     for spine in ax.spines.values():
